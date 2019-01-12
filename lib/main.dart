@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jobly/views/detail.dart';
 import 'package:jobly/views/notify.dart';
 
 void main() => runApp(MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
         home: MyHomePage(),
         routes: {
           '/home': (BuildContext context) => MyHomePage(),
-          '/detail': (BuildContext context) => MyHomePage(),
+          '/detail': (BuildContext context) => Detail(),
           '/notify': (BuildContext context) => Notify(),
         });
   }
@@ -41,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
           FlatButton(
             onPressed: () {},
             child: Hero(
-              tag: 'hero',
+              tag: 'back',
               child: Image.asset('assets/icons/back.png', scale: 3.3),
             ),
           ),
@@ -57,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
           FlatButton(
             onPressed: () {},
             child: Hero(
-              tag: 'hero',
+              tag: 'notif',
               child: Image.asset('assets/icons/notif.png', scale: 3.3),
             ),
           ),
@@ -80,7 +81,10 @@ class _MyHomePageState extends State<MyHomePage> {
       width: 330, height: 0.32, child: Container(color: Colors.black26));
 
   Widget _buildAvatar() {
-    return Image.asset("assets/icons/profile.png", scale: 5.3);
+    return Hero(
+      tag: 'avatar',
+      child: Image.asset("assets/icons/profile.png", scale: 5.3),
+    );
   }
 
   Widget _rowStats() {
@@ -141,7 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return new Material(
-        color: Colors.white,
+      color: Colors.white,
       child: Center(
         child: ListView(
           children: <Widget>[
@@ -149,7 +153,11 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
                 _topBar(context),
-                _buildAvatar(),
+                FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pushNamed("/detail");
+                    },
+                    child: _buildAvatar()),
                 Text("Ogbonda Chiziaruhoma",
                     style:
                         TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
@@ -168,99 +176,102 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 Container(
                   padding: EdgeInsets.only(bottom: 21),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.max,
-                        children: <Widget>[
-                          SizedBox(width: 35),
-                          Text("Welcome",
-                              style: TextStyle(
-                                  fontSize: 19, fontWeight: FontWeight.bold)),
-                        ],
-                      ),
-                      Container(
-                          child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              SizedBox(
-                                child: Image.asset("assets/icons/effects.png",
-                                    scale: 5.2),
-                              ),
-                              Text("Adobe After Effects",
-                                  style: TextStyle(
-                                      fontSize: 11,
-                                      fontWeight: FontWeight.bold)),
-                              SizedBox(height: 8),
-                              Row(
-                                children: <Widget>[
-                                  Text("Tony Hammers",
-                                      style: TextStyle(
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w300)),
-                                  SizedBox(width: 45)
-                                ],
-                              ),
-                              SizedBox(height: 10),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.max,
-                                children: <Widget>[
-                                  SizedBox(
-                                      height: 3, width: 90, child: effects),
-                                  SizedBox(width: 10),
-                                  Text("34%",
-                                      style: TextStyle(
-                                        fontSize: 9,
-                                      )),
-                                ],
-                              ),
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              SizedBox(
-                                child: Image.asset("assets/icons/intro.png",
-                                    scale: 5.2),
-                              ),
-                              Text("Intro to motion Design",
-                                  style: TextStyle(
-                                      fontSize: 11,
-                                      fontWeight: FontWeight.bold)),
-                              SizedBox(height: 8),
-                              Row(
-                                children: <Widget>[
-                                  Text("Amy Swimmer",
-                                      style: TextStyle(
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.w300)),
-                                  SizedBox(width: 45),
-                                ],
-                              ),
-                              SizedBox(height: 10),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.max,
-                                children: <Widget>[
-                                  SizedBox(height: 3, width: 90, child: intro),
-                                  SizedBox(width: 10),
-                                  Text("65%",
-                                      style: TextStyle(
-                                        fontSize: 9,
-                                      )),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
-                      ))
-                    ],
+                  child: Container(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.max,
+                          children: <Widget>[
+                            SizedBox(width: 35),
+                            Text("Welcome",
+                                style: TextStyle(
+                                    fontSize: 19, fontWeight: FontWeight.bold)),
+                          ],
+                        ),
+                        Container(
+                            child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                SizedBox(
+                                  child: Image.asset("assets/icons/effects.png",
+                                      scale: 5.2),
+                                ),
+                                Text("Adobe After Effects",
+                                    style: TextStyle(
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.bold)),
+                                SizedBox(height: 8),
+                                Row(
+                                  children: <Widget>[
+                                    Text("Tony Hammers",
+                                        style: TextStyle(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w300)),
+                                    SizedBox(width: 45)
+                                  ],
+                                ),
+                                SizedBox(height: 10),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: <Widget>[
+                                    SizedBox(
+                                        height: 3, width: 90, child: effects),
+                                    SizedBox(width: 10),
+                                    Text("34%",
+                                        style: TextStyle(
+                                          fontSize: 9,
+                                        )),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                SizedBox(
+                                  child: Image.asset("assets/icons/intro.png",
+                                      scale: 5.2),
+                                ),
+                                Text("Intro to motion Design",
+                                    style: TextStyle(
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.bold)),
+                                SizedBox(height: 8),
+                                Row(
+                                  children: <Widget>[
+                                    Text("Amy Swimmer",
+                                        style: TextStyle(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w300)),
+                                    SizedBox(width: 45),
+                                  ],
+                                ),
+                                SizedBox(height: 10),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: <Widget>[
+                                    SizedBox(
+                                        height: 3, width: 90, child: intro),
+                                    SizedBox(width: 10),
+                                    Text("65%",
+                                        style: TextStyle(
+                                          fontSize: 9,
+                                        )),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ))
+                      ],
+                    ),
                   ),
                 )
               ],
