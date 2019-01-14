@@ -1,12 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:jobly/views/messages.dart';
 
 class Notify extends StatefulWidget {
   @override
   _NotifyPageState createState() => _NotifyPageState();
 }
 
-class _NotifyPageState extends State<Notify> {
-  
+class _NotifyPageState extends State<Notify>
+    with SingleTickerProviderStateMixin {
+  TabController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    //nemw();
+
+    // Initialize the Tab Controller
+    controller = new TabController(length: 2, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    // Dispose of the Tab Controller
+    controller.dispose();
+    super.dispose();
+  }
+
   final line = Hero(
     tag: 'hero',
     child: Image.asset('assets/icons/line.png', scale: 3.7),
@@ -45,19 +64,25 @@ class _NotifyPageState extends State<Notify> {
         child: Scaffold(
           appBar: AppBar(
             bottom: TabBar(
+              controller: controller,
               tabs: [
-                Tab(icon: Icon(Icons.directions_car)),
-                Tab(icon: Icon(Icons.directions_transit)),
-                Tab(icon: Icon(Icons.directions_bike)),
+                Tab(
+                  text: "Messages",
+                ),
+                Tab(text: "Users"),
               ],
             ),
-            title: Text('Tabs Demo'),
+            title: Text('Jobly'),
           ),
           body: TabBarView(
+            controller: controller,
             children: [
-              Icon(Icons.directions_car),
-              Icon(Icons.directions_transit),
-              Icon(Icons.directions_bike),
+              Messages(),
+              Center(
+                child: Container(
+                  child: Text("No Current Users"),
+                ),
+              ),
             ],
           ),
         ),
