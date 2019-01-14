@@ -22,18 +22,18 @@ class _DetailPageState extends State<Detail> {
           child: Image.asset("assets/icons/saved.png", scale: 5.3),
         ));
 
+    double _bodyHeight = 0.0;
+
     return Container(
       color: Colors.white,
-      // 1
-      // appBar: _buildBar(context),
       child: MediaQuery.removePadding(
         removeTop: true,
         removeLeft: true,
         removeRight: true,
         context: context,
         child: Material(
-          child: ListView(children: <Widget>[
-            Column(mainAxisSize: MainAxisSize.max, children: <Widget>[
+          child: SingleChildScrollView(
+            child: Column(children: <Widget>[
               Container(
                 child: new Hero(
                   tag: "avatar",
@@ -52,55 +52,96 @@ class _DetailPageState extends State<Detail> {
                 ),
               ),
               SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.only(left: 3),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    Text(
-                      "Intro to Art",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Text(
+                    "Intro to Art",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    "Mark Rufus",
+                    style: TextStyle(fontSize: 9),
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    "18 Hours",
+                    style: TextStyle(fontSize: 7),
+                  ),
+                  SizedBox(height: 24),
+                  Row(
+                    children: <Widget>[],
+                  ),
+                  SizedBox(height: 34),
+                ],
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  CupertinoButton(
+                    onPressed: () {},
+                    color: Colors.blue,
+                    child: Text(
+                      "Join Course",
+                      style: TextStyle(color: Colors.white),
                     ),
-                    SizedBox(height: 5),
-                    Text(
-                      "Mark Rufus",
-                      style: TextStyle(fontSize: 9),
-                    ),
-                    SizedBox(height: 5),
-                    Text(
-                      "18 Hours",
-                      style: TextStyle(fontSize: 7),
-                    ),
-                    SizedBox(height: 24),
-                    Row(
-                      children: <Widget>[],
-                    ),
-                    SizedBox(height: 34),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        CupertinoButton(
-                          onPressed: () {},
-                          color: Colors.blue,
-                          child: Text(
-                            "Join Course",
-                            style: TextStyle(color: Colors.white),
+                  )
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      new Card(
+                        child: new Container(
+                          height: 50.0,
+                          child: new Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              new IconButton(
+                                icon: new Icon(Icons.keyboard_arrow_down),
+                                onPressed: () {
+                                  setState(() {
+                                    _bodyHeight = 300.0;
+                                  });
+                                },
+                              )
+                            ],
                           ),
-                        )
-                      ],
-                    ),
-                 Column(
-                   children: <Widget>[
-                     ],
-                 )
-                  ],
-                ),
+                        ),
+                      ),
+                      new Card(
+                        child: new AnimatedContainer(
+                          child: new Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              new IconButton(
+                                icon: new Icon(Icons.keyboard_arrow_up),
+                                onPressed: () {
+                                  setState(() {
+                                    _bodyHeight = 0.0;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
+                          curve: Curves.easeInOut,
+                          duration: const Duration(milliseconds: 500),
+                          height: _bodyHeight,
+                          // color: Colors.red,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               )
             ]),
-          ]),
+          ),
         ),
       ),
     );
