@@ -57,7 +57,12 @@ class _MyHomePageState extends State<MyHomePage> {
         children: <Widget>[
           FlatButton(
             onPressed: () {
-              Navigator.of(context).pushNamed("/detail");
+             Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Notify(),
+                        ),
+                      );
             },
             child: Hero(
               tag: 'notif',
