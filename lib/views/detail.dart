@@ -12,15 +12,10 @@ class _DetailPageState extends State<Detail> {
     double screenHeight = MediaQuery.of(context).size.height * 0.40;
     double screenWidth = MediaQuery.of(context).size.width;
 
-    final saved = Container(
-        padding: EdgeInsets.all(5),
-        decoration: new BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        child: Hero(
-          tag: 'saved',
-          child: Image.asset("assets/icons/saved.png", scale: 5.3),
-        ));
+    final saved = Hero(
+      tag: 'saved',
+      child: Image.asset("assets/icons/save.png", scale: 3.5),
+    );
 
     double _bodyHeight = 0.0;
 
@@ -52,61 +47,80 @@ class _DetailPageState extends State<Detail> {
                 ),
               ),
               SizedBox(height: 20),
-              Column(
-                children: <Widget>[
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        "Intro to Art",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 19),
-                      )
-                    ],
-                  ),
-                  SizedBox(height: 5),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        "Mark Rufus",
-                        style: TextStyle(fontSize: 9),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 5),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        "18 Hours",
-                        style: TextStyle(fontSize: 7),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 24),
-                  Row(
-                    children: <Widget>[],
-                  ),
-                  SizedBox(height: 34),
-                ],
+              Padding(
+                padding: const EdgeInsets.only(left: 28.0),
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          "Intro to Art",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 19),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 5),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          "Mark Rufus",
+                          style: TextStyle(fontSize: 9),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 5),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          "18 Hours",
+                          style: TextStyle(fontSize: 7),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 14),
+                    Row(
+                      children: <Widget>[],
+                    ),
+                    SizedBox(height: 24),
+                  ],
+                ),
               ),
               Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  CupertinoButton(
-                    onPressed: () {},
-                    color: Colors.blue,
-                    child: Text(
-                      "Join Course",
-                      style: TextStyle(color: Colors.white),
+                  SizedBox(
+                    width: 250,
+                    child: MaterialButton(
+                      elevation: 12,
+                      height: 50,
+                      highlightColor: Colors.blue,
+                      onPressed: () {},
+                      color: Colors.blue,
+                      child: Text(
+                        "Join Course",
+                        style: TextStyle(color: Colors.white, fontSize: 14),
+                      ),
                     ),
                   ),
-                  saved
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Card(
+                    elevation: 10,
+                    child: IconButton(
+                      icon: Icon(Icons.bookmark, color: Colors.grey),
+                      onPressed: () {},
+                      highlightColor: Colors.black12,
+                    ),
+                  )
                 ],
               ),
               Column(
@@ -114,46 +128,13 @@ class _DetailPageState extends State<Detail> {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      new Card(
-                        child: new Container(
-                          height: 50.0,
-                          child: new Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: <Widget>[
-                              new IconButton(
-                                icon: new Icon(Icons.keyboard_arrow_down),
-                                onPressed: () {
-                                  setState(() {
-                                    _bodyHeight = 300.0;
-                                  });
-                                },
-                              )
-                            ],
-                          ),
-                        ),
+                      Row(children: <Widget>[
+                        Text(
+                        "Join Course",
+                        style: TextStyle(fontSize: 14),
                       ),
-                      new Card(
-                        child: new AnimatedContainer(
-                          child: new Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              new IconButton(
-                                icon: new Icon(Icons.keyboard_arrow_up),
-                                onPressed: () {
-                                  setState(() {
-                                    _bodyHeight = 0.0;
-                                  });
-                                },
-                              ),
-                            ],
-                          ),
-                          curve: Curves.easeInOut,
-                          duration: const Duration(milliseconds: 500),
-                          height: _bodyHeight,
-                          // color: Colors.red,
-                        ),
-                      ),
+                      Icon(Icons.bookmark, color: Colors.grey)
+                      ],)
                     ],
                   ),
                 ],
