@@ -53,22 +53,39 @@ class _DetailPageState extends State<Detail> {
               ),
               SizedBox(height: 20),
               Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  Text(
-                    "Intro to Art",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        "Intro to Art",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 19),
+                      )
+                    ],
                   ),
                   SizedBox(height: 5),
-                  Text(
-                    "Mark Rufus",
-                    style: TextStyle(fontSize: 9),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        "Mark Rufus",
+                        style: TextStyle(fontSize: 9),
+                      ),
+                    ],
                   ),
                   SizedBox(height: 5),
-                  Text(
-                    "18 Hours",
-                    style: TextStyle(fontSize: 7),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        "18 Hours",
+                        style: TextStyle(fontSize: 7),
+                      ),
+                    ],
                   ),
                   SizedBox(height: 24),
                   Row(
@@ -88,7 +105,8 @@ class _DetailPageState extends State<Detail> {
                       "Join Course",
                       style: TextStyle(color: Colors.white),
                     ),
-                  )
+                  ),
+                  saved
                 ],
               ),
               Column(
