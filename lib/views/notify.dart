@@ -59,20 +59,27 @@ class _NotifyPageState extends State<Notify>
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: DefaultTabController(
         length: 3,
         child: Scaffold(
           appBar: AppBar(
+            backgroundColor: Colors.white,
+            centerTitle: true,
             bottom: TabBar(
               controller: controller,
+              indicatorColor: Colors.black87,
               tabs: [
                 Tab(
-                  text: "Messages",
+                  child: Text(
+                    "Messages",
+                    style: TextStyle(color: Colors.black),
+                  ),
                 ),
-                Tab(text: "Users"),
+                Tab(child: Text("Users", style: TextStyle(color: Colors.black)))
               ],
             ),
-            title: Text('Jobly'),
+            title: Text('Messages', style: TextStyle(color: Colors.black, fontSize: 16)),
           ),
           body: TabBarView(
             controller: controller,

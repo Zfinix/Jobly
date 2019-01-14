@@ -55,9 +55,9 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
-          InkWell(
-            onTap: () {
-               Navigator.of(context).pushNamed("/notify");
+          FlatButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed("/detail");
             },
             child: Hero(
               tag: 'notif',
